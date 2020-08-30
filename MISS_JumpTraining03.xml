@@ -1,0 +1,91 @@
+<mission_data version="1.0" background_id_arme="c423a181-ec5d-4f27-b1d8-83dfd5670c69" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="c423a181-ec5d-4f27-b1d8-83dfd5670c69">
+    <create count="2000" type="mines" startX="49948.0" startY="0.0" startZ="49947.0" endX="49948.0" endY="0.0" endZ="49947.0" randomRange="50000" randomSeed="4" />
+    <create type="player" x="50000.0" y="0.0" z="50000.0" angle="0" name="Artemis" warp="no" jump="yes" />
+    <create type="station" x="73271.0" y="0.0" z="10583.0" name="DS1" hullID="1000" sideValue="2" />
+    <create type="station" x="14500.0" y="0.0" z="14838.0" name="DS2" hullID="1000" sideValue="2" />
+    <create type="station" x="71000.0" y="0.0" z="69000.0" name="DS3" hullID="1000" sideValue="2" />
+    <create type="station" x="12162.0" y="0.0" z="69908.0" name="DS4" hullID="1000" sideValue="2" />
+    <set_difficulty_level value="5" />
+    <set_skybox_index index="10" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <set_object_property property="sensorSetting" value="1" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <big_message title="Jump Drive Training 3" subtitle1="by Jadarendir" subtitle2="training simulation for Artemis 2.7.5" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="Phase" value="0.0" integer="yes" />
+  </start>
+  <event name="Event 1" id_arme="c8d3d583-1a77-4579-be3d-89c0639dcfe9">
+    <if_timer_finished name="start_mission_timer_1" />
+    <if_variable name="Phase" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Welcome back to training, crewman. Time for a stress test. You have to worry about the mines, but your enemies don't. Simulation begins in thirty seconds. Good luck and watch your step.</incoming_comms_text>
+    <set_timer name="Phase 1" seconds="30" />
+    <set_variable name="Phase" value="1.0" integer="yes" />
+  </event>
+  <event name="Event 2" id_arme="cf7fad17-50e0-4410-96ab-b00c465eb62d">
+    <if_timer_finished name="Phase 1" />
+    <if_variable name="Phase" comparator="EQUALS" value="1.0" />
+    <incoming_comms_text from="COMPUTER" sideValue="2" type="ALERT">PROXIMITY ALERT: Multiple Skaraan energy signatures detected. RECOMMENDATION: Immediate intervention.</incoming_comms_text>
+    <create type="enemy" x="98891.0" y="0.0" z="30074.0" angle="90" name="S91" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="S91" ability="AntiMine" />
+    <create type="enemy" x="1000.0" y="0.0" z="31397.0" angle="320" name="G44" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="G44" ability="AntiMine" />
+    <create type="enemy" x="44079.0" y="0.0" z="98681.0" angle="320" name="V08" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="V08" ability="AntiMine" />
+    <create type="enemy" x="42193.0" y="0.0" z="1109.0" angle="160" name="Z36" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="Z36" ability="AntiMine" />
+    <set_variable name="Phase" value="2.0" integer="yes" />
+  </event>
+  <event name="Event 3" id_arme="1b1bef24-c967-4968-94d4-c891b92524b2">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="0" sideValue="1" />
+    <if_variable name="Phase" comparator="EQUALS" value="2.0" />
+    <create type="enemy" x="98891.0" y="0.0" z="50074.0" angle="90" name="R47" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="R47" ability="AntiMine" />
+    <create type="enemy" x="1000.0" y="0.0" z="51397.0" angle="200" name="H19" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="H19" ability="AntiMine" />
+    <create type="enemy" x="55079.0" y="0.0" z="98681.0" angle="320" name="K66" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="K66" ability="AntiMine" />
+    <create type="enemy" x="30193.0" y="0.0" z="1109.0" angle="160" name="A91" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="A91" ability="AntiMine" />
+    <set_variable name="Phase" value="3.0" integer="yes" />
+  </event>
+  <event name="Event 4" id_arme="15cc2f13-1229-48e6-a908-7c4229fc99af">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="0" sideValue="1" />
+    <if_variable name="Phase" comparator="EQUALS" value="3.0" />
+    <create type="enemy" x="98891.0" y="0.0" z="30074.0" angle="90" name="X21" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="X21" ability="AntiMine" />
+    <create type="enemy" x="1000.0" y="0.0" z="31397.0" angle="320" name="E37" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="E37" ability="AntiMine" />
+    <create type="enemy" x="44079.0" y="0.0" z="98681.0" angle="320" name="C51" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="C51" ability="AntiMine" />
+    <create type="enemy" x="42193.0" y="0.0" z="1109.0" angle="160" name="L60" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_special name="L60" ability="AntiMine" />
+    <create type="enemy" x="98891.0" y="0.0" z="50074.0" angle="90" name="O36" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="O36" ability="AntiMine" />
+    <create type="enemy" x="1000.0" y="0.0" z="51397.0" angle="200" name="J42" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="J42" ability="AntiMine" />
+    <create type="enemy" x="55079.0" y="0.0" z="98681.0" angle="320" name="B22" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="B22" ability="AntiMine" />
+    <create type="enemy" x="30193.0" y="0.0" z="1109.0" angle="160" name="P03" raceKeys="Skaraan" hullKeys="Executor" sideValue="1" fleetnumber="0" />
+    <set_special name="P03" ability="AntiMine" />
+    <set_variable name="Phase" value="4.0" integer="yes" />
+  </event>
+  <event name="Event 5" id_arme="8a9066c1-03ee-466d-900d-80f501324e6e">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="0" sideValue="1" />
+    <if_variable name="Phase" comparator="EQUALS" value="4.0" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Well done, crewman. That concludes your Jump Drive training. Report to your superior officer for new orders.</incoming_comms_text>
+    <set_timer name="End Mission" seconds="10" />
+    <set_variable name="Phase" value="5.0" integer="yes" />
+  </event>
+  <event name="Event 6" id_arme="0af655f2-d569-4a04-b5f4-6e6c4fd89437">
+    <if_timer_finished name="End Mission" />
+    <if_variable name="Phase" comparator="EQUALS" value="5.0" />
+    <end_mission />
+  </event>
+</mission_data>

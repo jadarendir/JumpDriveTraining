@@ -1,0 +1,176 @@
+<mission_data version="1.0" background_id_arme="892896f8-cb2e-45bd-9669-e9be9fc30820" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="892896f8-cb2e-45bd-9669-e9be9fc30820">
+    <create count="1000" type="mines" startX="0.0" startY="0.0" startZ="0.0" endX="100000.0" endY="0.0" endZ="100000.0" randomRange="5000" />
+    <create count="1000" type="mines" startX="50000.0" startY="0.0" startZ="0.0" endX="30000.0" endY="0.0" endZ="100000.0" randomRange="5000" />
+    <create count="1000" type="mines" startX="100000.0" startY="0.0" startZ="40620.0" endX="0.0" endY="0.0" endZ="45000.0" randomRange="5000" />
+    <create type="player" x="50000.0" y="0.0" z="71000.0" angle="0" name="Artemis" sideValue="2" warp="no" jump="yes" />
+    <create type="station" x="50263.0" y="0.0" z="70000.0" name="DS1" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="68053.0" y="0.0" z="52615.0" name="DS2" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="57315.0" y="0.0" z="30279.0" name="DS3" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="35208.0" y="0.0" z="21515.0" name="DS4" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="20887.0" y="0.0" z="35074.0" name="DS5" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="29861.0" y="0.0" z="52518.0" name="DS6" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <set_difficulty_level value="5" />
+    <set_skybox_index index="10" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <set_object_property property="sensorSetting" value="0" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <big_message title="Jump Drive Training 2" subtitle1="by Jadarendir" subtitle2="training simulation for Artemis 2.7.5" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="Mission Parameters" value="0.0" integer="yes" />
+    <set_variable name="Skaraans" value="0.0" integer="yes" />
+  </start>
+  <event name="Event 0" id_arme="32b6c1d6-6f3e-4b0c-8d1b-ef38b14caf4c">
+    <if_timer_finished name="start_mission_timer_1" />
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Welcome back to training, crewman. We're doing something a little trickier today. Protect these six stations from attack, and be careful of the mines. Your mission begins in thirty seconds. Good luck!</incoming_comms_text>
+    <set_timer name="Phase 1" seconds="30" />
+    <set_variable name="Mission Parameters" value="1.0" integer="yes" />
+  </event>
+  <event name="Event 1" id_arme="cb5f55bb-2fcd-474a-88b8-f52ca67af316">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="1.0" />
+    <if_timer_finished name="Phase 1" />
+    <incoming_comms_text from="COMPUTER" sideValue="2" type="ALERT">PROXIMITY ALERT: Long-range sensors detecting multiple inbound hostile fleets.</incoming_comms_text>
+    <create type="enemy" x="92813.0" y="0.0" z="7082.0" angle="130" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="95852.0" y="0.0" z="6768.0" angle="130" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="92708.0" y="0.0" z="4672.0" angle="130" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="1" />
+    <create type="enemy" x="95852.0" y="0.0" z="4043.0" angle="130" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="1" />
+    <set_variable name="Mission Parameters" value="2.0" integer="yes" />
+  </event>
+  <event name="Event 2" id_arme="16936c13-33e8-4f20-8a9b-abfee3040cd4">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="2.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="1" sideValue="1" />
+    <create type="enemy" x="2553.0" y="0.0" z="95480.0" angle="325" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="2200.0" y="0.0" z="93126.0" angle="325" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="4583.0" y="0.0" z="95165.0" angle="325" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="2" />
+    <create type="enemy" x="4359.0" y="0.0" z="93231.0" angle="325" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="2" />
+    <set_variable name="Mission Parameters" value="3.0" integer="yes" />
+  </event>
+  <event name="Event 3" id_arme="8f7599f1-45e4-41f4-b4c8-18ba6fa72218">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="3.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="2" sideValue="1" />
+    <create type="enemy" x="30664.0" y="0.0" z="1213.0" angle="190" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="3" />
+    <create type="enemy" x="32865.0" y="0.0" z="1423.0" angle="190" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="3" />
+    <create type="enemy" x="29616.0" y="0.0" z="2052.0" angle="190" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="3" />
+    <create type="enemy" x="31293.0" y="0.0" z="2576.0" angle="190" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="3" />
+    <set_variable name="Mission Parameters" value="4.0" integer="yes" />
+  </event>
+  <event name="Event 4" id_arme="903677ee-8184-485e-8fcb-22d92997a30c">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="4.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="3" sideValue="1" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">So far, so simple. Get ready, we're about to throw some curveballs your way.</incoming_comms_text>
+    <set_timer name="Phase 2" seconds="15" />
+    <set_variable name="Mission Parameters" value="5.0" integer="yes" />
+  </event>
+  <event name="Event 5" id_arme="05999c99-741c-4e19-8b44-a6bc2da15b2e">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="5.0" />
+    <if_timer_finished name="Phase 2" />
+    <incoming_comms_text from="COMPUTER" sideValue="2" type="ALERT">PROXIMITY ALERT: Long-range sensors detecting additional hostile contacts.</incoming_comms_text>
+    <create type="enemy" x="97319.0" y="0.0" z="67135.0" angle="60" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <create type="enemy" x="57494.0" y="0.0" z="95432.0" angle="20" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="4" />
+    <create type="enemy" x="59276.0" y="0.0" z="95432.0" angle="20" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="4" />
+    <create type="enemy" x="58961.0" y="0.0" z="96899.0" angle="20" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="4" />
+    <create type="enemy" x="58123.0" y="0.0" z="94279.0" angle="20" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="4" />
+    <set_variable name="Skaraans" value="1.0" integer="yes" />
+    <set_variable name="Mission Parameters" value="6.0" integer="yes" />
+  </event>
+  <event name="Event 6" id_arme="471d9078-486a-4237-b480-74e46f44d920">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="4" sideValue="1" />
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="6.0" />
+    <create type="enemy" x="1948.0" y="0.0" z="25947.0" angle="240" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="5" />
+    <create type="enemy" x="2787.0" y="0.0" z="24480.0" angle="240" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="5" />
+    <create type="enemy" x="3311.0" y="0.0" z="25633.0" angle="240" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="5" />
+    <create type="enemy" x="1424.0" y="0.0" z="24689.0" angle="240" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="5" />
+    <set_variable name="Mission Parameters" value="7.0" integer="yes" />
+  </event>
+  <event name="Event 7" id_arme="de1d2236-730d-478f-81d8-acebcffc4815">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="5" sideValue="1" />
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="7.0" />
+    <create type="enemy" x="98053.0" y="0.0" z="63886.0" angle="70" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="6" />
+    <create type="enemy" x="98472.0" y="0.0" z="64829.0" angle="70" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="6" />
+    <create type="enemy" x="97738.0" y="0.0" z="65248.0" angle="70" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="6" />
+    <create type="enemy" x="96586.0" y="0.0" z="63886.0" angle="70" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="6" />
+    <set_variable name="Mission Parameters" value="8.0" integer="yes" />
+  </event>
+  <event name="Event S-1" id_arme="a26e04eb-6387-49b9-a1d1-f0b3af2d60ce">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="0" sideValue="1" />
+    <if_variable name="Skaraans" comparator="EQUALS" value="1.0" />
+    <create type="enemy" x="98682.0" y="0.0" z="1318.0" angle="130" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_variable name="Skaraans" value="2.0" integer="yes" />
+  </event>
+  <event name="Event S-2" id_arme="ff0ed6c0-5a82-4108-8d42-5aeedec5f057">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="0" sideValue="1" />
+    <if_variable name="Skaraans" comparator="EQUALS" value="2.0" />
+    <create type="enemy" x="97843.0" y="0.0" z="2157.0" angle="130" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_variable name="Skaraans" value="3.0" integer="yes" />
+  </event>
+  <event name="Event S-3" id_arme="561cc791-dfb2-4b65-8746-5eb888e93757">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="0" sideValue="1" />
+    <if_variable name="Skaraans" comparator="EQUALS" value="3.0" />
+    <create type="enemy" x="30843.0" y="0.0" z="2157.0" angle="190" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_variable name="Skaraans" value="4.0" integer="yes" />
+  </event>
+  <event name="Event 8" id_arme="c8b35e24-5250-464b-85d6-8c3064c2a85a">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="8.0" />
+    <if_variable name="Skaraans" comparator="EQUALS" value="4.0" />
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="0" sideValue="1" />
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="6" sideValue="1" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Looks like you're still in one piece so far. Now for the final phase. Stay alive at all costs!</incoming_comms_text>
+    <set_timer name="Phase 3" seconds="15" />
+    <set_variable name="Mission Parameters" value="9.0" integer="yes" />
+  </event>
+  <event name="Event 9" id_arme="0d7547b4-6894-493a-b983-7ae989dcd426">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="9.0" />
+    <if_timer_finished name="Phase 3" />
+    <incoming_comms_text from="COMPUTER" sideValue="2" type="ALERT">PROXIMITY ALERT: Long-range sensors detecting multiple hostile fleets inbound. RECOMMENDATION: Call for reinforcements.</incoming_comms_text>
+    <create type="enemy" x="98053.0" y="0.0" z="63886.0" angle="70" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="96586.0" y="0.0" z="63886.0" angle="70" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="98472.0" y="0.0" z="64829.0" angle="70" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="97738.0" y="0.0" z="65248.0" angle="70" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="1948.0" y="0.0" z="25947.0" angle="240" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="2787.0" y="0.0" z="24480.0" angle="240" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="3311.0" y="0.0" z="25633.0" angle="240" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="1424.0" y="0.0" z="24689.0" angle="240" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="57494.0" y="0.0" z="95432.0" angle="20" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="59276.0" y="0.0" z="95432.0" angle="20" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="58961.0" y="0.0" z="96899.0" angle="20" raceKeys="Kralien" hullKeys="Dreadnought" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="58123.0" y="0.0" z="94279.0" angle="20" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="30664.0" y="0.0" z="1213.0" angle="190" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="32865.0" y="0.0" z="1423.0" angle="190" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="29616.0" y="0.0" z="2052.0" angle="190" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="31293.0" y="0.0" z="2576.0" angle="190" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="2553.0" y="0.0" z="95480.0" angle="325" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="2200.0" y="0.0" z="93126.0" angle="325" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="4583.0" y="0.0" z="95165.0" angle="325" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="4359.0" y="0.0" z="93231.0" angle="325" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="92813.0" y="0.0" z="7082.0" angle="130" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="95852.0" y="0.0" z="6768.0" angle="130" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="92708.0" y="0.0" z="4672.0" angle="130" raceKeys="Kralien" hullKeys="Cruiser" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="95852.0" y="0.0" z="4043.0" angle="130" raceKeys="Kralien" hullKeys="Battleship" sideValue="1" fleetnumber="7" />
+    <create type="enemy" x="97319.0" y="0.0" z="67135.0" angle="60" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <create type="enemy" x="98682.0" y="0.0" z="1318.0" angle="130" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <create type="enemy" x="30843.0" y="0.0" z="2157.0" angle="190" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <create type="enemy" x="97843.0" y="0.0" z="2157.0" angle="130" raceKeys="Skaraan" hullKeys="Enforcer" sideValue="1" fleetnumber="0" />
+    <set_variable name="Mission Parameters" value="10.0" integer="yes" />
+  </event>
+  <event name="Event 10" id_arme="8f35aedc-f961-4ae5-8390-048f65f8c2c6">
+    <if_fleet_count comparator="EQUALS" value="0.0" fleetnumber="7" sideValue="1" />
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="10.0" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Well done, crewman. It looks like you're getting the hang of this.</incoming_comms_text>
+    <set_timer name="Mission End" seconds="10" />
+    <set_variable name="Mission Parameters" value="11.0" integer="yes" />
+  </event>
+  <event name="End" id_arme="9ac88505-9ff9-4b4c-bf79-3619aadb91f6">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="11.0" />
+    <if_timer_finished name="Mission End" />
+    <end_mission />
+  </event>
+</mission_data>

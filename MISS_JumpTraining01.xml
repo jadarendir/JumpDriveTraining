@@ -1,0 +1,128 @@
+<mission_data version="1.0" background_id_arme="a84d57ea-3caa-4eba-b151-eb6cec34efb9" playerShipNames_arme="Artemis\Intrepid\Aegis\Horatio\Excalibur\Hera\Ceres\Diana">
+  <start id_arme="a84d57ea-3caa-4eba-b151-eb6cec34efb9">
+    <create count="200" type="mines" startX="49832.0" startY="0.0" startZ="29962.0" endX="49832.0" endY="0.0" endZ="29962.0" randomRange="10000" randomSeed="40" />
+    <create count="200" type="mines" startX="70038.0" startY="0.0" startZ="49719.0" endX="70038.0" endY="0.0" endZ="49719.0" randomRange="10000" randomSeed="14" />
+    <create count="200" type="mines" startX="49832.0" startY="0.0" startZ="69812.0" endX="49832.0" endY="0.0" endZ="69812.0" randomRange="10000" randomSeed="96" />
+    <create count="200" type="mines" startX="29963.0" startY="0.0" startZ="49270.0" endX="29963.0" endY="0.0" endZ="49270.0" randomRange="10000" randomSeed="605" />
+    <create count="600" type="mines" startX="72720.0" startY="0.0" startZ="89794.0" endX="28720.0" endY="0.0" endZ="89794.0" randomRange="10000" randomSeed="605" />
+    <create count="600" type="mines" startX="72169.0" startY="0.0" startZ="8971.0" endX="28169.0" endY="0.0" endZ="8971.0" randomRange="10000" randomSeed="402" />
+    <create count="600" type="mines" startX="89682.0" startY="0.0" startZ="28392.0" endX="89682.0" endY="0.0" endZ="72392.0" randomRange="10000" randomSeed="402" />
+    <create count="600" type="mines" startX="10094.0" startY="0.0" startZ="28607.0" endX="10094.0" endY="0.0" endZ="72607.0" randomRange="10000" randomSeed="402" />
+    <create type="player" x="50000.0" y="0.0" z="50000.0" angle="0" name="Artemis" sideValue="2" warp="no" jump="yes" />
+    <create type="station" x="90693.0" y="0.0" z="8858.0" name="DS6" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="90131.0" y="0.0" z="90467.0" name="DS9" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="10319.0" y="0.0" z="90018.0" name="DS8" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="10319.0" y="0.0" z="8746.0" name="DS7" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="70150.0" y="0.0" z="30187.0" name="DS2" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="70150.0" y="0.0" z="69925.0" name="DS5" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="30412.0" y="0.0" z="69812.0" name="DS4" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="30861.0" y="0.0" z="29176.0" name="DS3" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <create type="station" x="50000.0" y="0.0" z="49700.0" name="DS1" raceKeys="Terran" hullKeys="Deep Space Base" sideValue="2" />
+    <set_difficulty_level value="5" />
+    <set_skybox_index index="10" />
+    <set_object_property property="nebulaIsOpaque" value="0" />
+    <set_object_property property="sensorSetting" value="0" />
+    <set_object_property property="nonPlayerSpeed" value="100" />
+    <set_object_property property="nonPlayerShield" value="100" />
+    <set_object_property property="nonPlayerWeapon" value="100" />
+    <set_object_property property="playerWeapon" value="100" />
+    <set_object_property property="playerShields" value="100" />
+    <big_message title="Jump Drive Training 1" subtitle1="by Jadarendir" subtitle2="training simulation for Artemis 2.7.5" />
+    <set_timer name="start_mission_timer_1" seconds="10" />
+    <set_variable name="Opening transmission" value="0.0" integer="yes" />
+  </start>
+  <event name="Opening Transmission" id_arme="1469f914-6bb6-4781-9e02-8dc582a9c75c">
+    <if_timer_finished name="start_mission_timer_1" />
+    <if_variable name="Opening transmission" comparator="EQUALS" value="0.0" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Good morning, crewman. Today we'll be going through some basic drills to get you used to the jump drive. There's no time limit, so this training can be done solo if need be. Start by docking at DS1.</incoming_comms_text>
+    <set_variable name="Opening transmission" value="1.0" integer="yes" />
+    <set_variable name="Mission Parameters" value="0.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 1" id_arme="1436866d-8836-4f71-b0c9-283c0437fea8">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="0.0" />
+    <if_docked player_name="Artemis" name="DS1" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Alright, let's get started. Undock and jump to DS2. Coordinates can be retrieved from the Science panel, and you can increase your jump speed from the Engineering panel. Helm, make sure your coordinates are correct or your rematerialization may get a little, er... energetic.</incoming_comms_text>
+    <set_variable name="Mission Parameters" value="1.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 2" id_arme="b81c525e-d28d-41d7-a4b9-fc89273ae0e0">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="1.0" />
+    <if_docked player_name="Artemis" name="DS2" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Well done, Helmsman. Remember, it's especially important to dock frequently when using this kind of drive. You don't want to run out of energy mid-jump.</incoming_comms_text>
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Next, jump to DS6. See if you can improve your speed and accuracy over your last jump.</incoming_comms_text>
+    <set_variable name="Mission Parameters" value="2.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 3" id_arme="a470290f-c4ee-432e-b7d8-6a14285fc8d9">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="2.0" />
+    <if_docked player_name="Artemis" name="DS6" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Excellent. Now, jump to DS9. Make sure you don't undershoot it.</incoming_comms_text>
+    <set_variable name="Mission Parameters" value="3.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 4" id_arme="0ddb000f-8fd5-46d2-a3e0-0866a07fa785">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="3.0" />
+    <if_docked player_name="Artemis" name="DS9" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Nice job. Next, we want you to plot a course to DS7. The maximum jump distance is 99 KM, so this will take at least two jumps.</incoming_comms_text>
+    <set_variable name="Mission Parameters" value="4.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 5" id_arme="0b926503-1d94-493f-9c39-7b4a74bf54b3">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="4.0" />
+    <if_docked player_name="Artemis" name="DS7" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Nice job. Next, we want you to plot a course to DS7. The maximum jump distance is 99 KM, so this will take at least two jumps.</incoming_comms_text>
+    <set_variable name="Mission Parameters" value="5.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 6" id_arme="5f4e8994-74c4-4774-897d-0efe0e6a3578">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="5.0" />
+    <if_docked player_name="Artemis" name="DS7" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Alright, almost done. Your last directive is to jump to each of the remaining stations; DS3, DS4, DS5, and DS8. You can do these jumps in any order. Remember to dock at each station or the computer won't count it.</incoming_comms_text>
+    <set_variable name="DS3" value="0.0" integer="yes" />
+    <set_variable name="DS4" value="0.0" integer="yes" />
+    <set_variable name="DS5" value="0.0" integer="yes" />
+    <set_variable name="DS8" value="0.0" integer="yes" />
+    <set_variable name="Mission Parameters" value="6.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 6.1" id_arme="b3b64b54-096f-444e-945a-544615ae74e5">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="6.0" />
+    <if_variable name="DS3" comparator="EQUALS" value="0.0" />
+    <if_docked player_name="Artemis" name="DS3" />
+    <set_variable name="DS3" value="1.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 6.2" id_arme="2b5c73a1-ee60-49c7-89f7-6cbe072d748f">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="6.0" />
+    <if_variable name="DS4" comparator="EQUALS" value="0.0" />
+    <if_docked player_name="Artemis" name="DS4" />
+    <set_variable name="DS4" value="1.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 6.3" id_arme="3c231f09-d046-4002-a350-8bcf39b88f90">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="6.0" />
+    <if_variable name="DS5" comparator="EQUALS" value="0.0" />
+    <if_docked player_name="Artemis" name="DS5" />
+    <set_variable name="DS5" value="1.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 6.4" id_arme="4472e25a-eaf2-448c-9520-41078ed256eb">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="6.0" />
+    <if_variable name="DS8" comparator="EQUALS" value="0.0" />
+    <if_docked player_name="Artemis" name="DS8" />
+    <set_variable name="DS8" value="1.0" integer="yes" />
+  </event>
+  <event name="Mission Stage 7" id_arme="402f48c4-c61c-4485-a43b-0920dd446e6c">
+    <if_variable name="Mission Parameters" comparator="EQUALS" value="6.0" />
+    <if_variable name="DS3" comparator="EQUALS" value="1.0" />
+    <if_variable name="DS4" comparator="EQUALS" value="1.0" />
+    <if_variable name="DS5" comparator="EQUALS" value="1.0" />
+    <if_variable name="DS8" comparator="EQUALS" value="1.0" />
+    <warning_popup_message message="Incoming Command Transmission" consoles="MHC" name="Artemis" />
+    <incoming_comms_text from="TSN Command" sideValue="2" type="FRIEND">Excellent work, Helmsman. This training mission is complete. Simulation ending.</incoming_comms_text>
+    <set_timer name="end_mission_01" seconds="15" />
+    <set_variable name="Mission Parameters" value="7.0" integer="yes" />
+  </event>
+  <event name="End" id_arme="11523b45-bcc7-4a2b-b4ce-fd6554049b5f">
+    <if_timer_finished name="end_mission_01" />
+    <end_mission />
+  </event>
+</mission_data>
